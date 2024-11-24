@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlideShoe</title>
+</head>
+<style>
+    .container{
+        width: fit-content;
+        margin: 50px auto;
+        position: relative;
+    }
+    .ico-action{
+        height: 80px;
+        position: absolute;
+        top: 40%;
+        cursor: pointer;
+        transition: 0.5s;
+    }
+    .ico-pre{
+        left:0px;
+    }
+    .ico-prev:hover{
+        transform: scale(0.8s) translateX(-10px);
+    }
+    .ico-next{
+        right: 0px;
+    }
+    .ico-next:hover{
+        transform: scale(0.8s) translateX(10px);
+    }
+    #slide{
+        height: 500px;
+        width: 900px;
+        object-fit: cover;
+        border-radius: 10px;
+        border: 1px solid black;
+        margin: 10px auto;
+    }
+</style>
+<body>
+    <h1 style="text-align: center; font-size: 40px; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">SlideShow</h1>
+    <div class="container">
+        <img src="flower1.jpeg" id="slide"/>
+        <img src="previous.png" class="ico-action ico-pre" onclick="previous()"/>
+        <img src="next.png" class="ico-action ico-next" onclick="next()"/>
+    </div>
+    
+    <script>
+        const images=["flower1.jpeg","flower2.jpeg","flower3.jpeg","flower4.jpeg","flower5.jpeg","flower6.jpeg"];
+        let index = 0;
+        const slide= document.getElementById('slide')
+        function next()
+        {
+            if(index < images.length -1){
+           index++;
+            }
+            else{
+                index=0;
+            }
+           slide.src = images[index];
+        }
+         function previous()
+         {
+            if(index>0){
+             index--;
+            }
+            else{
+            index = images.length -1;
+            }
+           slide.src = images[index];
+        }
+
+
+        // setInterval(next, 2000);
+    </script>
+</body>
+</html>
